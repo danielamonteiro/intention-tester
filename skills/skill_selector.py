@@ -35,12 +35,8 @@ def choose_skill(skill_list):
 
 def get_skill_credentials(skill_name):
     with open('service_credentials.json') as json_file:
-        skill_list_file = json.load(json_file)
-        for skill in skill_list_file:
-            if skill['name'] == skill_name:
-                skill_to_use = skill
+        skill_list_file = json.load(json_file)['skills']
+        skill_to_use = next((skill for skill in skill_list_file if skill['name'] == skill_name), None)
+    json_file.close()
     
-    print(skill_to_use)
-
-
-get_skill_credentials('skill_name')
+    return skill_to_use
