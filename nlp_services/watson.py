@@ -43,11 +43,9 @@ def check_intent(response, expected_intent):
         watson_confidence = '0'
     
     if expected_intent == watson_intent:
-        print("SUCCESS! :)")
-        result = "sucess"
+        result = "Sucess"
     else:
-        print("FAILED! :(")
-        result = "failed"
+        result = "Failed"
     
     result_list = [utterance, expected_intent, watson_intent, watson_confidence, result]
     return result_list
