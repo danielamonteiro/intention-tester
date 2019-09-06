@@ -1,14 +1,15 @@
-from datetime import time
+import time
 
-import watson_developer_cloud
+import ibm_watson
 
 username = ""
 password = ""
 version = ""
 skill_id = ""
+url = ""
 
 def watson_conversation(username, password, version):
-    conversation = watson_developer_cloud.ConversationV1(username=username, password=password, version=version)
+    conversation = ibm_watson.AssistantV1(username=username, password=password, version=version)
     return conversation
 
 def get_watson_response(utterance):
@@ -29,6 +30,11 @@ def get_watson_response(utterance):
     return response
 
 def check_intent(response, expected_intent):
+    if 'input' in response:
+        utterance = response['input']['text']
+    else:
+        utterance = ""
+
     if len(response['intents']) > 0:
         watson_intent = str(response['intents'][0]['intent'])
         watson_confidence = str(round(float(response['intents'][0]['confidence']),2))
@@ -43,4 +49,5 @@ def check_intent(response, expected_intent):
         print("FAILED! :(")
         result = "failed"
     
-    return result
+    result_list = [utterance, expected_intent, watson_intent, watson_confidence, result]
+    return result_list
