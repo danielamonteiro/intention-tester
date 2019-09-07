@@ -2,11 +2,12 @@ import time
 
 import ibm_watson
 
-username = ""
-password = ""
-version = ""
-skill_id = ""
-url = ""
+username = "798d9946-1cd1-4760-8159-dc5994aa529b"
+password = "AaueW82kHTcV"
+version = "2018-07-10"
+skill_id = "ebb90339-b69c-41a9-8030-51891bede0f0"
+url = "https://gateway.watsonplatform.net/assistant/api"
+
 
 def watson_conversation(username, password, version):
     conversation = ibm_watson.AssistantV1(username=username, password=password, version=version)
