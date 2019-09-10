@@ -52,7 +52,7 @@ def choose_skill(skill_list):
                 print("Skill selecionado:", chosen_skill)
                 valid_skill = True
                 
-                return choose_skill
+                return chosen_skill
         except:
             print("[ATENÇÃO] Erro ao selecionar o skill. Tente novamente.\n")
 

@@ -1,12 +1,17 @@
 import time
-
 import ibm_watson
+import sys
+sys.path.append("..")
+from skills.skill_selector import get_skill_credentials
 
+'''
 username = "798d9946-1cd1-4760-8159-dc5994aa529b"
 password = "AaueW82kHTcV"
 version = "2018-07-10"
 skill_id = "ebb90339-b69c-41a9-8030-51891bede0f0"
 url = "https://gateway.watsonplatform.net/assistant/api"
+'''
+version, skill_id, username, password, url = get_skill_credentials()
 
 
 def watson_conversation(username, password, version):
@@ -50,3 +55,6 @@ def check_intent(response, expected_intent):
     
     result_list = [utterance, expected_intent, watson_intent, watson_confidence, result]
     return result_list
+
+resposta = get_watson_response("hola")
+print(resposta)
