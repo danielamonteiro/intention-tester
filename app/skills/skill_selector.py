@@ -1,13 +1,16 @@
 import json
+import os
 
 def get_skill_credentials():
     skill_list = get_skills_list()
     skill_to_use = choose_skill(skill_list)
 
-    with open('service_credentials.json') as json_file:
+    actual_path = os.path.abspath(os.path.dirname(__file__))
+    service_credentias_file = f"{actual_path}/service_credentials.json"
+
+    with open(service_credentias_file) as json_file:
         skill_list_file = json.load(json_file)['skills']
         skill_credentials = next((skill for skill in skill_list_file if skill['name'] == skill_to_use), None)
-        print(skill_credentials)
     json_file.close()
 
     try:
@@ -24,16 +27,17 @@ def get_skill_credentials():
 
 def get_skills_list():
     try:
-        with open('service_credentials.json') as json_file:
+        actual_path = os.path.abspath(os.path.dirname(__file__))
+        service_credentias_file = f"{actual_path}/service_credentials.json"
+        with open(service_credentias_file) as json_file:
             skill_list_file = json.load(json_file)
             skill_list = []
             for skill in skill_list_file['skills']:
                 skill_list.append(skill['name'])
-    
+        json_file.close()
         return skill_list
     except:
         print("[ERRO] Não foi possível carregar a lista de skills. Por favor, verifique se o arquivo service_credentials.json está preenchido corretamente.")
-    json_file.close()
 
 def choose_skill(skill_list):
     valid_skill = False
@@ -55,7 +59,3 @@ def choose_skill(skill_list):
                 return chosen_skill
         except:
             print("[ATENÇÃO] Erro ao selecionar o skill. Tente novamente.\n")
-
-
-a = get_skill_credentials()
-print(a)

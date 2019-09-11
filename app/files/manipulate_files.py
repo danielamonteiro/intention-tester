@@ -40,7 +40,7 @@ def get_test_files():
     utterances_list = []
     actual_path = os.path.abspath(os.path.dirname(__file__))
     test_files_path = os.path.join(actual_path, f"../files/test_files/")
-
+    
     for test_files in os.listdir(test_files_path):
         expected_intent = test_files[:-4]
         actual_file = open(f"{test_files_path}/{test_files}", "r")
