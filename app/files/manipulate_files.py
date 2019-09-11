@@ -6,7 +6,7 @@ import openpyxl
 from openpyxl.utils import get_column_letter
 
 def create_file():
-    name_file = input("Insira o nome do arquivo que será gerado com os resulados dos testes: ")
+    name_file = input("Insira o nome do arquivo que será gerado com os resultados dos testes: ")
     actual_path = os.path.abspath(os.path.dirname(__file__))
     result_files_path = os.path.join(actual_path, f"../files/result_files/{name_file}.xlsx")
     while path.exists(result_files_path) == True:
