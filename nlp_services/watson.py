@@ -14,18 +14,21 @@ def watson_conversation(username, password, version):
 
 def get_watson_response(utterance):
     try_again = True
+    retry = 0
 
     while try_again == True:
         try:
+            if retry > 4:
+                print("[ATENÇÃO] Não estou conseguindo me conectar com o Watson. Por favor, verifique se as informações do arquivo 'service_credentials.json' está preenchido corretamente e tente novamente")  
+                break  
             conversation = watson_conversation(username, password, version)
             response = conversation.message(skill_id, input={'text': utterance}).get_result()
             try_again == False
             break   
-        except KeyboardInterrupt:
-            break      
         except:
             print("Não consegui me conectar com o Watson, 1 segundo vou tentar de novo, pera aí...")
             time.sleep(1)
+            retry = retry+1
     
     return response
 

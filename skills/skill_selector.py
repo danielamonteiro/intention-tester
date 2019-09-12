@@ -37,7 +37,7 @@ def get_skills_list():
         json_file.close()
         return skill_list
     except:
-        print("[ERRO] Não foi possível carregar a lista de skills. Por favor, verifique se o arquivo service_credentials.json está preenchido corretamente.")
+        print("[ATENÇÃO] Não foi possível carregar a lista de skills. Por favor, verifique se o arquivo service_credentials.json está preenchido corretamente.")
 
 def choose_skill(skill_list):
     valid_skill = False
