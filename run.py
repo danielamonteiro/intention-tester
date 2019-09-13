@@ -14,12 +14,12 @@ def generate_results():
             watson_response = get_watson_response(utterance[0])
             utterance_result = check_intent(watson_response, utterance[1])
             result_list.append(utterance_result)
-        print(f"Testes finalizados! ;)\nVerifique os resultados em 'files/result_files/{result_file}.xlsx'")
         edit_file(result_file, result_list)
+        print(f"Testes finalizados! ;)\nVerifique os resultados em 'files/result_files/{result_file}.xlsx'")        
     except KeyboardInterrupt:
         print("[ATENÇÃO] Aplicação parada pelo usuário")
-    except:
-        print("[ATENÇÃO] Erro ao finalizar os testes. Tente novamente depois de validar o(s) arquivo(s) indicado(s).")
+    except Exception as e:
+        print("[ERRO]", e)
 
 if __name__ == "__main__":
     generate_results()
