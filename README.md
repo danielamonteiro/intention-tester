@@ -6,7 +6,7 @@ Intention tester é uma aplicação simples para ser utilizada na automatizaçã
 Importante para você analisar o desempenho de reconhecimento correto das intenções do seu modelo.
 
 ### 2. Só serve para Watson Assistant?
-Essa primeira versão sim. Mas a adaptação para outros serviços de classificação de intenção já está em andamento. ;)
+Sim!
 
 ### 3. Como usar?
 Agora vem a parte legal. A utilização da ferramenta é muito fácil. :relieved:  
